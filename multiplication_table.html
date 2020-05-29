@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+    <title>Multiplication Table</title>
+    
+    <style>
+	table {
+		color: #F00;
+	}
+	</style>
+    
+    <script>
+	
+	var play = prompt ("Do you want to make a multiplication table? (y/n)");
+	//If the user wants to play it will run the multiplication table
+	//If the user doesn't want to play then they will be given another chance to choose to play
+	
+	if (play == "yes" || play == "Yes" || play == "y" || play == "Y") {
+		start();
+		//If the user says they want to play then the start funtion will run the table
+	}
+	else if (play == "no" || play == "No" || play == "n" || play == "N") {
+		end();
+		//If they say they don't want to play then it will run the end function that will give them the option to play or end the game
+	}
+	else { 
+		document.write("You didn't answer the question properly so you obviously don't want to play.");
+		//This will complete the code and nothing past the document.write will run and the game is over
+	}	
+	
+	function start() {
+	//Function start() begins running the code for the multiplication table to be made 
+		
+	var mulNum = parseInt (prompt ("Pick a number."));
+	//Asks the user for a max number to be multiplied in the table
+	//parse.Int turns the variable from a string to an integer
+	var x = 0;
+	var y = 0;
+		
+	document.write("<table border=1>");
+	//This allows the table to be aesthetically pleasing with a pretty border :)
+	document.write("<tr><th colspan = '" + (mulNum + 1) + "' >Multiplication Table</th></tr>");
+	//This gives the table a "title" or main header that spans across the entire top
+	
+	for (y = 0; y <= mulNum; y++) {
+		//Loops until the number increases from 0 to the chosen number
+		//This determines the number of rows that are created
+		document.write("<tr>");
+		//This begins the nest row
+		
+		for (x = 0; x <= mulNum; x++) {
+			//This loops until the number increases from 0 to the chosen number
+			//This determined the number of collumns that are created
+			if (y==0) {
+				document.write ("<th>" + x + "</th>" );
+				//This will make sure the x value is displayed
+				//The x value increses by 1 each time the second for loop loops while y stays the same
+			} else if (x==0) {
+				//After the first for loop loops the first time this will trigger
+				//This displays the y value 
+				document.write ("<th>" + y + "</th>");
+			} else {
+				document.write ("<td> " + x*y + "</td>");
+				//This multiplies the x and the y to make the product
+			}
+		}
+		document.write("</tr>");
+		//Closes the table row tag which allows a new table row to be created in the next loop
+	}
+	 
+	document.write("</table>");
+	//Closes/ends the table
+	
+	}
+	
+	function end() {
+	//This triggers the code that pairs with if you didn't want to play
+	
+	var ays = prompt ("Are you sure you don't want to make a multiplication table?(y/n)");
+	
+	while (ays == "no"|| ays == "No" || ays == "n" || ays == "N") {
+	//This will loop as long as the user isn't sure about making the multiplication table
+		ays = prompt ("I'm going to give you another chance to change your mind then! Are you sure you don't want to make a multiplication table?");
+		if (ays == "no"|| ays == "No" || ays == "n" || ays == "N") {
+			ays = "meh";
+			start();
+		}
+		else {
+			document.write("<h1>Sucks for You!</h1> <p>You chose not to play so quite frankly I don't feel bad that you're missing out on this amazing game.</p>");
+		}
+	}
+	if (ays == "yes"|| ays == "Yes" || ays == "y" || ays == "Y") {
+		document.write("<p>Fine. Party pooper.</p>");
+	}
+	}
+	
+	</script>
+    
+</head>
+
+<body>
+
+</body>
+
+</html>
